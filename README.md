@@ -1,5 +1,5 @@
 # Display N Webcams
-A webpage meant to be hosted on a local server to display 1-n directly connected JavaScript-accessible videoinput streams like webcams.  You can also tap to enlarge any stream, and tap again to shrink.
+A webpage meant to be hosted on a local server to display 1-n directly connected, JavaScript-accessible videoinput streams like webcams.  You can also tap to enlarge any stream, and tap again to shrink.
 
 Example with 3 cameras:
 ![Example with 3 Cameras](https://github.com/drdrewusaf/Display-N-Webcams/blob/main/images/3-cam-example.png "Example with 3 Cameras")
