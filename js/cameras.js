@@ -62,8 +62,6 @@ async function getKnownCameras(file) {
   await askForPermissions();
   cameraDevices = [];
   var allDevices = await navigator.mediaDevices.enumerateDevices();
-  console.log(allDevices);
-  console.log('Alldevices: ' + allDevices.length + ', knownCameras: ' + knownCameras.length);
 
   for (var i = 0; i < allDevices.length; i++) {
     var device = allDevices[i];
