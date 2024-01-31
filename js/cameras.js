@@ -45,18 +45,23 @@ function captureCamera(video, selectedCamera) {
 async function projectorBuilder(camNum, camName) {
   let response = await fetch('/snippets/projector-snippet.html');
   let projectorHTML = document.createElement('div');
-  projectorHTML.setAttribute('class', 'col-xl-12 col-xxl-4 box');
+  projectorHTML.setAttribute('class', 'col-auto box');
   projectorHTML.innerHTML = await (response.text());
   projectorHTML.querySelector('video').setAttribute('id', camNum);
   projectorHTML.querySelector('span').textContent = camName;
   return projectorHTML
 };
 
-async function getKnownCameras(file) {
+async function loadKnownCameras() {
   let knownCameras = [];
-  let response = await fetch(file);
-  let data = await (response.text());
-  knownCameras = JSON.parse(data);
+  for (var i = 0; i <= localStorage.length; i++){
+    lclStItem = localStorage.getItem(localStorage.key(i))
+    if (localStorage.getItem(localStorage.key(i)) != null 
+        && localStorage.getItem(localStorage.key(i)).includes('cam')) {
+      nextCam = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      knownCameras.push(nextCam);
+    }
+  };
 
   let cameraDevices;
   await askForPermissions();
@@ -72,16 +77,21 @@ async function getKnownCameras(file) {
 
   console.log(cameraDevices);
 
-  for (let i = 0; i < knownCameras.length; i++) {
-    let matchId = cameraDevices.findIndex(cameraDevices => cameraDevices.deviceId === knownCameras[i].camHwId);
-    if (matchId >= 0) {
-      document.getElementById('cameras').append(await projectorBuilder(knownCameras[i].camNum, knownCameras[i].camName));
-      captureCamera(document.getElementById(knownCameras[i].camNum),
-        cameraDevices[matchId].deviceId);
+  for (let i = 1; i <= knownCameras.length; i++) {
+    let knownCamerasMatchOrderId = knownCameras.findIndex(knownCameras => knownCameras.camNum === 'cam' + i);
+    if (knownCamerasMatchOrderId >= 0) {
+      let cameraDeviceMatchId = cameraDevices.findIndex(cameraDevices => cameraDevices.deviceId === knownCameras[knownCamerasMatchOrderId].camHwId);
+      if (cameraDeviceMatchId >= 0) {
+        document.getElementById('cameras').append(await projectorBuilder(
+          knownCameras[knownCamerasMatchOrderId].camNum, knownCameras[knownCamerasMatchOrderId].camName
+          ));
+        captureCamera(document.getElementById(knownCameras[knownCamerasMatchOrderId].camNum),
+          cameraDevices[cameraDeviceMatchId].deviceId);
+      };
     };
   }
 
-  let videos = document.getElementsByClassName('camera');
+  let videos = document.getElementsByClassName('camera'); 
   videoArray = Array.from(videos)
   videoArray.forEach(video => {
     video.addEventListener('pointerdown', function (event) {
@@ -97,4 +107,4 @@ async function getKnownCameras(file) {
   });
 };
 
-getKnownCameras('./knownCameras.json');
+loadKnownCameras();

@@ -7,8 +7,14 @@
     <title>Camera Monitor</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
     <script src="js/cameras.js"></script>
 </head>
+<header>
+    <nav class="navbar navbar-dark bg-dark justify-content-end">
+        <input type="submit" id="manageBtn" value="Manage Cameras" class="btn btn-dark" onclick="manageCameras()"/>
+    </nav>
+</header>
 
 <body>
     <div class="row cameras" id="cameras">
@@ -16,4 +22,5 @@
     </div>
 </body>
 <script src="js/bootstrap.min.js"></script>
+
 </html>
