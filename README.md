@@ -6,7 +6,7 @@ Example with 3 cameras:
 ![Example with 3 Cameras](https://github.com/drdrewusaf/Display-N-Webcams/blob/main/images/3-cam-example.png "Example with 3 Cameras")
 
 ## Usage
-The important files are index.html, all /snippets/*, /js/script.js, and /js/cameras.js.  All others are for styling, including bootstrap.
+The important files are index.html, all /snippets/*, and /js/cameras.js.  All others are for styling, including bootstrap.
 
 ### Setup
 1) If you want to keep the default styling using bootstrap, host the entirety of this repo in a webserver folder on the machine with video streams (webcams). Otherwise, make sure the important files listed above are hosted. 
@@ -24,4 +24,4 @@ The important files are index.html, all /snippets/*, /js/script.js, and /js/came
 6) When done, click the save button.
 
 ### Maintaining
-If you want to delete/add/change cameras, click the "Manage Cameras" button.  Any camera with the checkbox unchecked will be deleted if it was previously added.
+If you want to delete/add/change cameras, click the "Manage Cameras" button.  Any camera with the checkbox unchecked will be deleted if it was previously saved.
