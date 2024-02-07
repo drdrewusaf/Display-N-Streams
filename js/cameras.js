@@ -3,9 +3,9 @@ window.onload = async function () {
 };
 
 async function askForPermissions() {
-  var stream;
+  let stream;
   try {
-    var constraints = { video: true, audio: false };
+    let constraints = { video: true, audio: false };
     stream = await navigator.mediaDevices.getUserMedia(constraints);
   } catch (e) {
     console.log(e);
@@ -24,7 +24,7 @@ function closeStream(stream) {
 };
 
 function captureCamera(video, selectedCamera) {
-  var constraints = {
+  let constraints = {
     audio: false,
     video: true
   }
@@ -51,7 +51,6 @@ async function projectorBuilder(camNum, camName) {
   projectorHTML.querySelector('span').textContent = camName;
   return projectorHTML
 };
-
 
 async function insertConfigForm() {
   let response = await fetch('/snippets/config-form-snippet.html');
@@ -83,7 +82,7 @@ async function buildFormItems(i, noOfCams) {
 
 async function getCameraDevices() {
   let cameraDevices = [];
-  var allDevices = await navigator.mediaDevices.enumerateDevices();
+  let allDevices = await navigator.mediaDevices.enumerateDevices();
   for (var i = 0; i < allDevices.length; i++) {
     var device = allDevices[i];
     if (device.kind == 'videoinput') {
@@ -94,10 +93,11 @@ async function getCameraDevices() {
 };
 
 async function generateForm(settingsFound) {
+  let hideables = ['NameInput', 'OrderSelect', 'NameLabel', 'OrderLabel', 'NameBreak', 'OrderBreak', 'CheckboxBreak']
   document.getElementById('cameras').append(await insertConfigForm());
   for (var i = 0; i < noOfCams; i++) {
     let cameraDevices = await getCameraDevices();
-    var device = cameraDevices[i];
+    let device = cameraDevices[i];
     document.getElementById('form-options').append(await buildFormItems(i, noOfCams));
     document.getElementById('cam' + i + 'Checkbox').setAttribute('value', device.deviceId);
     document.getElementById('cam' + i + 'CheckboxLabel').append(device.label);
@@ -109,13 +109,9 @@ async function generateForm(settingsFound) {
         document.getElementById('cam' + i + 'NameInput').setAttribute('value', knownCameras[knownCameraIndex].camName);
         let dropIndex = knownCameras[knownCameraIndex].camNum.substring(3);
         document.getElementById('cam' + i + 'OrderSelect').value = dropIndex
-        document.getElementById('cam' + i + 'NameInput').toggleAttribute('hidden');
-        document.getElementById('cam' + i + 'OrderSelect').toggleAttribute('hidden');
-        document.getElementById('cam' + i + 'NameLabel').toggleAttribute('hidden');
-        document.getElementById('cam' + i + 'OrderLabel').toggleAttribute('hidden');
-        document.getElementById('cam' + i + 'NameBreak').toggleAttribute('hidden');
-        document.getElementById('cam' + i + 'OrderBreak').toggleAttribute('hidden');
-        document.getElementById('cam' + i + 'CheckboxBreak').toggleAttribute('hidden');
+        for (var h = 0; h < hideables.length; h++) {
+          document.getElementById('cam' + i + hideables[h]).toggleAttribute('hidden')
+        };
       } else {
         document.getElementById('cam' + i + 'NameInput').setAttribute('value', 'Camera ' + i + ' Name');
       };
@@ -126,7 +122,9 @@ async function generateForm(settingsFound) {
   const saveBtn = document.getElementById('saveBtn');
   saveBtn.addEventListener('click', saveSettings);
   const cancelBtn = document.getElementById('cancelBtn');
-  cancelBtn.addEventListener('click', function () { location.reload(); })
+  cancelBtn.addEventListener('click', function () { 
+    location.reload(); 
+  });
   const clearBtn = document.getElementById('clearBtn');
   clearBtn.addEventListener('click', function () {
     localStorage.clear();
@@ -208,9 +206,6 @@ async function loadKnownCameras() {
   let knownCameras = await getKnownCameras();
   let cameraDevices = await getCameraDevices();
   await askForPermissions();
-
-  console.log(cameraDevices);
-
   for (let i = 1; i <= knownCameras.length; i++) {
     let knownCamerasMatchOrderId = knownCameras.findIndex(knownCameras => knownCameras.camNum === 'cam' + i);
     if (knownCamerasMatchOrderId >= 0) {
