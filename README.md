@@ -1,5 +1,7 @@
 # Display N Webcams
-A webpage meant to be hosted on a local server to display 1-n directly connected, JavaScript-accessible videoinput streams like webcams.  You can also tap to enlarge any stream, and tap again to shrink.
+Inspired by Chrysler Pacifica FamCam, I wanted to make a DIY backseat camera solution for monitoring my kiddos.
+
+Display N Webcams is a webpage for displaying 1-n directly connected, JavaScript-accessible videoinput streams like webcams.  You can also tap to enlarge any stream, and tap again to shrink.
 
 Example with 3 cameras:
 
