@@ -182,9 +182,14 @@ async function saveSettings() {
 }
 
 async function manageCameras() {
-  cameras = document.getElementById('cameras');
-  while (cameras.hasChildNodes()) {
-    cameras.removeChild(cameras.firstChild);
+  let cameras = document.getElementsByClassName('camera');
+  for (const camera of cameras) {
+    let stream = camera.srcObject;
+    closeStream(stream);
+  };
+  let camerasBlock = document.getElementById('cameras');
+  while (camerasBlock.hasChildNodes()) {
+    camerasBlock.removeChild(camerasBlock.firstChild);
   }
   savedCamSearch('manage');
 }
