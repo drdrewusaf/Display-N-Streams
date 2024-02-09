@@ -20,7 +20,7 @@ The important files are index.html, all /snippets/*, and /js/cameras.js.  All ot
 
 4) Using the checkboxes, select the cameras you wish to use/save.
 
-5) When a box is checked, additional mandatory options are for camera name and order are presented.
+5) When a box is checked, additional mandatory options for camera name and order are presented.
 ![Example of Manage Cameras Page](https://github.com/drdrewusaf/Display-N-Webcams/blob/main/images/manage-cams-1.png "Example of Manage Cameras Page")
 
 6) When done, click the save button.
