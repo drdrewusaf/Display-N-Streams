@@ -68,7 +68,7 @@ async function buildFormItems(i, noOfCams) {
   let formItemHTML = document.createElement('div');
   formItemHTML.innerHTML = (await response.text());
   formItemHTML.innerHTML = formItemHTML.innerHTML.replace(/camNum/g, 'cam' + i);
-  for (o = 1; o <= noOfCams; o++) {
+  for (let o = 1; o <= noOfCams; o++) {
     let newOpt = document.createElement('option');
     newOpt.setAttribute('value', o);
     if (o == i + 1) {
@@ -83,8 +83,8 @@ async function buildFormItems(i, noOfCams) {
 async function getCameraDevices() {
   let cameraDevices = [];
   let allDevices = await navigator.mediaDevices.enumerateDevices();
-  for (var i = 0; i < allDevices.length; i++) {
-    var device = allDevices[i];
+  for (let i = 0; i < allDevices.length; i++) {
+    let device = allDevices[i];
     if (device.kind == 'videoinput') {
       cameraDevices.push(device);
     }
@@ -95,7 +95,7 @@ async function getCameraDevices() {
 async function generateForm(settingsFound) {
   let hideables = ['NameInput', 'OrderSelect', 'NameLabel', 'OrderLabel', 'NameBreak', 'OrderBreak', 'CheckboxBreak']
   document.getElementById('cameras').append(await insertConfigForm());
-  for (var i = 0; i < noOfCams; i++) {
+  for (let i = 0; i < noOfCams; i++) {
     let cameraDevices = await getCameraDevices();
     let device = cameraDevices[i];
     document.getElementById('form-options').append(await buildFormItems(i, noOfCams));
@@ -109,7 +109,7 @@ async function generateForm(settingsFound) {
         document.getElementById('cam' + i + 'NameInput').setAttribute('value', knownCameras[knownCameraIndex].camName);
         let dropIndex = knownCameras[knownCameraIndex].camNum.substring(3);
         document.getElementById('cam' + i + 'OrderSelect').value = dropIndex
-        for (var h = 0; h < hideables.length; h++) {
+        for (let h = 0; h < hideables.length; h++) {
           document.getElementById('cam' + i + hideables[h]).toggleAttribute('hidden')
         };
       } else {
@@ -160,7 +160,7 @@ async function loadSettings(knownCamFound, settingsFound) {
 };
 
 async function saveSettings() {
-  for (var i = 0; i < noOfCams; i++) {
+  for (let i = 0; i < noOfCams; i++) {
     if (document.querySelector('#cam' + i + 'Checkbox').checked) {
       selectedCamOrderNum = document.querySelector('#cam' + i + 'OrderSelect');
       camOrderNum = selectedCamOrderNum.options[selectedCamOrderNum.selectedIndex].value;
@@ -196,7 +196,7 @@ async function manageCameras() {
 
 async function getKnownCameras() {
   let knownCameras = [];
-  for (var i = 0; i <= localStorage.length; i++) {
+  for (let i = 0; i <= localStorage.length; i++) {
     lclStItem = localStorage.getItem(localStorage.key(i))
     if (localStorage.getItem(localStorage.key(i)) != null
       && localStorage.getItem(localStorage.key(i)).includes('cam')) {
