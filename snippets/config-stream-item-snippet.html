@@ -1,0 +1,35 @@
+<label for="streamNumCheckbox" 
+    id="streamNumCheckboxLabel" 
+    class="form-check-label">
+</label>
+<input 
+    type="checkbox" 
+    id="streamNumCheckbox" 
+    value="value" 
+    role="switch" 
+    class="form-check-input" 
+    onclick="
+        document.getElementById('streamNumUrlInput').toggleAttribute('hidden');
+        document.getElementById('streamNumNameInput').toggleAttribute('hidden');
+        document.getElementById('streamNumOrderSelect').toggleAttribute('hidden');
+        document.getElementById('streamNumUrlLabel').toggleAttribute('hidden');
+        document.getElementById('streamNumNameLabel').toggleAttribute('hidden');
+        document.getElementById('streamNumOrderLabel').toggleAttribute('hidden');
+        document.getElementById('streamNumNameBreak').toggleAttribute('hidden');
+        document.getElementById('streamNumUrlBreak').toggleAttribute('hidden');
+        document.getElementById('streamNumOrderBreak').toggleAttribute('hidden');
+        document.getElementById('streamNumCheckboxBreak').toggleAttribute('hidden');
+        generateForm(true, true, this);" 
+        />
+<br id="streamNumCheckboxBreak" hidden>
+<label for="streamNumName" id="streamNumNameLabel" hidden>&emsp;Label the stream: </label>
+<input type="text" id="streamNumNameInput" name="streamNumName" value="streamNumNameVal" hidden />
+<br id="streamNumUrlBreak" hidden>
+<label for="streamNumUrlInput" id="streamNumUrlLabel" hidden>&emsp;Stream URL: </label>
+<input type="text" id="streamNumUrlInput" name="streamNumUrl" value="streamNumUrlVal" hidden />
+<br id="streamNumNameBreak" hidden>
+<label for="streamNumOrder" id="streamNumOrderLabel" hidden>&emsp;Display Order: </label>
+<select id="streamNumOrderSelect" name="streamNumOrder" hidden>
+
+</select>
+<br id="streamNumOrderBreak" hidden></br>

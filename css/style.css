@@ -21,6 +21,7 @@ input {
     font-size: 16px;
 }
 
+a,
 label,
 select {
     font-size: 18px;
@@ -28,6 +29,14 @@ select {
 
 a {
     color: lightgray;
+}
+
+.form-check-label {
+    float: left;
+}
+
+.form-check .form-check-input {
+    margin-left: 10px;
 }
 
 .btn {
@@ -48,10 +57,6 @@ a {
     padding-right: 20%;
 }
 
-.col-xl-12 {
-    height: 600px;
-}
-
 .title {
     position: absolute;
     top: 0px;
@@ -65,14 +70,21 @@ a {
     padding: 0px 5px 5px 5px;
 }
 
-@media (max-width: 1399px) {
+@media (min-width: 1200px) {
     video {
-        height: 600px;
+        width: 33vw;
     }
 }
 
-@media (min-width: 1400px) {
+@media (max-width: 1199px) {
     video {
-        width: 100%;
+        /* max-height: 600px; */
+        width: 48vw;
+    }
+}
+
+@media (max-width: 991px) {
+    video {
+        width: 96vw;
     }
 }

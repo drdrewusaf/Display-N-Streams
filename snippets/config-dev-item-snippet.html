@@ -1,0 +1,27 @@
+<label for="streamNumCheckbox" 
+    id="streamNumCheckboxLabel" 
+    class="form-check-label">
+</label>
+<input 
+    type="checkbox" 
+    id="streamNumCheckbox" 
+    value="value" 
+    role="switch"
+    class="form-check-input" 
+    onclick="
+        document.getElementById('streamNumNameInput').toggleAttribute('hidden');
+        document.getElementById('streamNumOrderSelect').toggleAttribute('hidden');
+        document.getElementById('streamNumNameLabel').toggleAttribute('hidden');
+        document.getElementById('streamNumOrderLabel').toggleAttribute('hidden');
+        document.getElementById('streamNumNameBreak').toggleAttribute('hidden');
+        document.getElementById('streamNumOrderBreak').toggleAttribute('hidden');
+        document.getElementById('streamNumCheckboxBreak').toggleAttribute('hidden');" />
+<br id="streamNumCheckboxBreak" hidden>
+<label for="streamNumName" id="streamNumNameLabel" hidden>&emsp;Label the stream: </label>
+    <input type="text" id="streamNumNameInput" name="streamNumName" value="streamNumNameVal" hidden />
+<br id="streamNumNameBreak" hidden>
+<label for="streamNumOrder" id="streamNumOrderLabel" hidden>&emsp;Display Order: </label>
+    <select id="streamNumOrderSelect" name="streamNumOrder" hidden>
+
+    </select>
+<br id="streamNumOrderBreak" hidden></br>
