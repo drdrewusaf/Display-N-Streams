@@ -11,7 +11,7 @@ Example with 3 streams:
 Host this repo on a webserver and select, name, and order the streams you wish to monitor.
 
 ### Setup
-1) If you want to keep the default styling using bootstrap, host the entirety of this repo in a webserver folder. Otherwise, make sure the important files listed above are hosted. 
+1) Host the entirety of this repo in a webserver folder. 
 
 2) With your webserver running, navigate to the index.html file.
 
