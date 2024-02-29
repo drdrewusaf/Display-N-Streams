@@ -1,5 +1,5 @@
 # Display N Streams
-Inspired by Chrysler Pacifica FamCam, I wanted to make a DIY backseat camera solution for monitoring my kiddos.
+Inspired by Chrysler Pacifica FamCam, I wanted to make a DIY backseat camera solution for monitoring my kiddos. However Display N Streams is not limited to just directly connected video devices, you can also access URL video streams (like web-enabled cameras, or live streams).
 
 Display N Streams is a webpage for displaying 1-n directly connected, JavaScript-accessible videoinput streams like webcams and URL streams supported by your browser.  You can also tap to enlarge any stream, and tap again to shrink.
 
