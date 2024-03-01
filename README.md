@@ -1,14 +1,14 @@
 # Display N Streams
 Inspired by Chrysler Pacifica FamCam, I wanted to make a DIY backseat camera solution for monitoring my kiddos. However Display N Streams is not limited to just directly connected video devices, you can also access URL video streams (like web-enabled cameras, or live streams).
 
-Display N Streams is a webpage for displaying 1-n directly connected, JavaScript-accessible videoinput streams like webcams and URL streams supported by your browser.  You can also tap to enlarge any stream, and tap again to shrink.
+Display N Streams is a webpage that will display 1-n streams supported by your browser and javascript.  You can also tap to enlarge any stream, and tap again to shrink.
 
 Example with 3 streams:
 
 ![Example with 3 Streams](https://github.com/drdrewusaf/Display-N-Webcams/blob/main/images/3-stream-example.png "Example with 3 Streams")
 
 ## Usage
-Host this repo on a webserver and select, name, and order the streams you wish to monitor.
+Host this repo on a webserver. Then navigate to index.html to select, name, and order the streams you wish to monitor.
 
 ### Setup
 1) Host the entirety of this repo in a webserver folder. 
