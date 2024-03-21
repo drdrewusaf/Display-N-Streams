@@ -22,14 +22,17 @@ function closeStream(stream) {
 };
 
 // Capture the given stream and update the <video> tag
-function captureStream(videoEl, streamSrc, streamType) {
+async function captureStream(videoEl, streamSrc, streamType) {
   if (streamType == 'dev') {
     // For attached devices
     let constraints = {
-      video: { deviceId: streamSrc },
+      video: { deviceId: {
+        exact: streamSrc 
+      }},
       audio: false
     };
-    navigator.mediaDevices.getUserMedia(constraints).then(function (camera) {
+    await navigator.mediaDevices.getUserMedia(constraints).then(function (camera) {
+      console.log(camera);
       videoEl.srcObject = camera;
     }).catch(function (e) {
       alert('Unable to capture your camera. Please check console logs.');
@@ -222,16 +225,15 @@ async function savedDataSearch(callReason) {
     if (knownStreams.length > 0) {
       knownStreamFound = true;
       settingsFound = true;
+      console.log('Stored data found. Opening streams...');
+      loadData(knownStreams);
     };
   } else if (callReason === 'manage') {
     settingsFound = true;
   };
   if (!knownStreamFound) {
     await generateForm(settingsFound);
-  } else {
-    console.log('Stored data found. Opening streams...');
-    loadData();
-  }
+  };
 };
 
 // Save any true-toggled streams to local storage as stringified JSON
@@ -296,11 +298,11 @@ async function getData() {
 }
 
 // Gather saved data, build "projectors", and capture the streams
-async function loadData() {
-  let knownStreams = await getData();
+async function loadData(knownStreams) {
   knownStreams.sort(function (a, b) {
     return a.id - b.id
   });
+  console.log(knownStreams);
   for (let i = 0; i < knownStreams.length; i++) {
     let s = knownStreams[i]
     document.getElementById('streams').append(await projectorBuilder(s.id, s.streamName));
