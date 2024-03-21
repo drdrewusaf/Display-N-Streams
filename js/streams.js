@@ -302,7 +302,6 @@ async function loadData(knownStreams) {
   knownStreams.sort(function (a, b) {
     return a.id - b.id
   });
-  console.log(knownStreams);
   for (let i = 0; i < knownStreams.length; i++) {
     let s = knownStreams[i]
     document.getElementById('streams').append(await projectorBuilder(s.id, s.streamName));
